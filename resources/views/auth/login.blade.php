@@ -158,9 +158,8 @@
         <form action="{{ route('login') }}" method="post">
             @csrf
             <span class="line"></span>
-            <p>نام کاربری</p>
-            {{--            <input class="input" type="text" name="user" value="{{old('user')}}" placeholder=" نام کاربری ">--}}
-            <input id="email" type="email" class="input" placeholder="ایمیل" name="email" value="{{ old('email') }}" required autofocus>
+            <p>  ایمیل / نام کاربری</p>
+            <input id="login" type="text" class="input" placeholder="ایمیل / نام کاربری" name="login" value="{{ old('name') ? :  old('email')}}" required autofocus>
             <p>رمز عبور</p>
             <input class="input" type="password" name="password" value="" placeholder="  رمز عبور ">
 

@@ -50,14 +50,16 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:80','alpha','unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ],[
             'name.required' => 'نام خود را وارد نمایید.',
             'name.max' => 'تعداد کاراکتر نام شما بیش از حد مجاز است.',
+            'name.alpha'=> 'نام کاربری شما باید فقط شامل حروف باشد',
             'email.required'=>'ایمیل خود را وارد نمایید.',
             'email.unique'=>'این ایمیل قبلا ثبت شده است',
+            'name.unique'=>'این نام کاربری قبلا ثبت شده است',
             'password.required' => 'رمز عبور خود را وارد نمایید.',
             'password.confirmed' => 'رمز عبور صحیح نمی باشد.',
             'password.min' => 'تعداد کاراکتر رمز عبور شما کمتر از 8 کاراکتر می باشد. ',

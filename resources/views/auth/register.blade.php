@@ -141,7 +141,7 @@
 <body class="body">
 <div class="container-fluid  bg_login p-0 ">
     @if(count($errors)>0)
-        <div class="alert col-lg-3 alert-danger text-right error">
+        <div class="alert col-lg-4 alert-danger text-right error">
             <ul>
                 @foreach($errors->all() as $error)
                     <li>{{$error}}</li>
@@ -155,7 +155,7 @@
             @csrf
             <span class="line"></span>
             <p>نام کاربری</p>
-            <input class="input" type="text" name="name" value="{{old('name')}}" placeholder=" نام کاربری ">
+            <input class="input" type="text" name="name" value="{{old('name')}}" autocomplete="name" placeholder=" نام کاربری ">
 
             <p>ایمیل</p>
             <input id="email" type="email" class="input" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="ایمیل">
@@ -167,6 +167,7 @@
 
             <button type="submit" class=" btn2 btn btn-success">ثبت نام</button>
         </form>
+        <a class="a" href="{{route('login')}}">قبلا ثبت نام کرده ام !</a>
     </div><!--login-->
 
 

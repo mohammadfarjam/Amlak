@@ -28,14 +28,14 @@
 </div><!--erorr-->
 <div class="container-fluid" style="border: 1px solid #a5df98;border-radius: 7px;">
     <div class="row">
-        <div class="col-lg-3 p-0 remove_zoom" style="height: 630px;overflow-y: auto">
+        <div class="col-lg-3 p-0 remove_zoom" style="height: 100vh;overflow-y: auto">
             <div class="mt-3 mb-3 d-flex justify-content-between">
                 <button data-toggle="modal" data-target="#modal_delete_date" type="button" class="btn btn-primary mr-3">
                     پاکسازی تاریخچه
 
 
                 </button>
-                <button href="{{route('logout')}}" class="btn btn-danger mr-1"
+                <button href="{{route('logout')}}" class="btn btn-danger ml-3"
                         style="text-align: center;height: 40px!important;cursor: pointer;"
                         onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">خروج
@@ -118,8 +118,8 @@
             </div><!--form-group-->
 
             <div class="form-group col-lg-12 address">
-                <input class="form-control" type="text" id="image" name="image" value="" placeholder="ادرس تصویر">
-                <input class="form-control" type="text" id="ext" name="ext" value="" placeholder="پسوند تصویر">
+                <input class="form-control" type="hidden" id="image" name="image" value="" placeholder="ادرس تصویر">
+                <input class="form-control" type="hidden" id="ext" name="ext" value="" placeholder="پسوند تصویر">
             </div><!--form-group-->
 
             <div class="form-group col-lg-12">
@@ -130,7 +130,7 @@
             </div><!--form-group-->
 
             <div class="col-lg-12">
-                <button id="save" disabled class="btn btn-success mt-3 savee" type="submit"
+                <button id="save" disabled class="btn btn-success mt-3 savee mb-3" type="submit"
                         onclick="sub();"> ثبت اطلاعات
                 </button>
             </div>
@@ -480,6 +480,14 @@
                         let rename_file = 1;
                         rename_file += val_rename_img * 1;
                         $('input[name=rename_img]').val(rename_file)
+
+
+                        //for minus total img
+                        let val_total_img = $('input[name=total_img]').val();
+                        let total_file = 1;
+                        total_file = val_total_img -1 * 1;
+                        $('input[name=total_img]').val(total_file);
+
                     }
                 },
                 error: function (return_data_image) {
@@ -532,6 +540,10 @@
             $('input[name=page_counter]').val(value_page_counter);
             let save_value_page_counter = recive_name_img.slice(0, -1);
         }, 700);
+        let tedad_item = $('.carousel-item').length;
+        if (tedad_item == 1) {
+            OperationComplete();
+        }
     }
 
 
@@ -607,6 +619,15 @@
             lensSize: 400,
         });
     });
+
+
+
+    function OperationComplete() {
+        swal({
+            text: "عملیات کد گذاری با موفقیت به پایان رسید",
+            button: false,
+        })
+    }
 
 </script>
 
